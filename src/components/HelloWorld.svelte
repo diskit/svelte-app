@@ -1,11 +1,13 @@
 <script lang='ts'>
+  import { createEventDispatcher } from "svelte";
+
 	export let msg = '';
   let count = 0;
-  export let callback: Function = () => {console.log('default callback')};
+  const dispatch = createEventDispatcher();
 
   const increment = () => {
     count++;
-    callback();
+    dispatch('incremented', { value: count });
   }
 </script>
   
