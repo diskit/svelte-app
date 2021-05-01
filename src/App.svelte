@@ -1,6 +1,7 @@
 <script lang='ts'>
 	import HelloWorld from './components/HelloWorld.svelte';
   import Props from './components/Props.svelte';
+  import Parent from './components/Parent.svelte';
 	const src = 'logo.svg';
   const callback = () => {
     console.log('callback')
@@ -26,4 +27,5 @@ img {
 </style>
 
 <img {src} alt="logo">
-<Props message="Hello Svelte" {callback}></Props>
+<!-- <Props message="Hello Svelte" {callback}></Props> -->
+<Parent></Parent>
