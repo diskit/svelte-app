@@ -1,9 +1,11 @@
 <script lang='ts'>
 	export let msg = '';
   let count = 0;
+  export let callback: Function = () => {console.log('default callback')};
 
   const increment = () => {
     count++;
+    callback();
   }
 </script>
   
