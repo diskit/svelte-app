@@ -1,33 +1,38 @@
 <script lang='ts'>
-	import HelloWorld from './components/HelloWorld.svelte';
-  import Props from './components/Props.svelte';
-  import Parent from './components/Parent.svelte';
-  import Reactive from './components/Reactive.svelte';
-	const src = 'logo.svg';
-  const callback = () => {
-    console.log('callback')
-  }
+import TaskList from './components/TaskList.svelte';
+import TaskForm from './components/TaskForm.svelte';
+import Header from './components/Header.svelte';
+import type { Task } from './task';
+
+let tasks: Task[] = [
+  {id: '111', value: 'svelte'}
+];
+
 </script>
   
-<style>
+<style lang="scss">
+
+:global(*) {
+  box-sizing: border-box;
+}
 
 :global(body) {
+  margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
-img {
-  width: 200px;
-  height: 200px;
+.main {
+  width: 50vw;
+  margin: auto;
 }
 
 </style>
+<Header></Header>
+<div class="main">
+  <TaskList {tasks}/>
+  <TaskForm />
+</div>
 
-<img {src} alt="logo">
-<!-- <Props message="Hello Svelte" {callback}></Props> -->
-<!-- <Parent></Parent> -->
-<Reactive></Reactive>
