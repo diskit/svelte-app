@@ -1,5 +1,5 @@
-const dateFormatter = Intl.DateTimeFormat('ja-JP', {year: 'numeric', month: '2-digit', day: '2-digit'})
+import dayjs from "dayjs"
 
 export function formatDate(d: Date) {
-  return dateFormatter.format(d);
+  return dayjs(d).format('YYYY-MM-DD')
 } 
