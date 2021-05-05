@@ -20,6 +20,7 @@
     color: #ff3e00;
     font-size: 16px;
     line-height: 1;
+    flex-grow: 1;
   }
 </style>
 

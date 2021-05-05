@@ -2,11 +2,16 @@
 import TaskList from './components/TaskList.svelte';
 import TaskForm from './components/TaskForm.svelte';
 import Header from './components/Header.svelte';
+import EmptyMessage from './components/EmptyMessage.svelte';
 import type { Task } from './task';
+import { createTask } from './task';
 
-let tasks: Task[] = [
-  {id: '111', value: 'svelte'}
-];
+let tasks: Task[] = [];
+
+const inputComplete = (event: CustomEvent) => {
+  const {task, deadline}  = event.detail;
+  tasks[tasks.length] = createTask(task, new Date(deadline));
+}
 
 </script>
   
@@ -18,6 +23,7 @@ let tasks: Task[] = [
 
 :global(body) {
   margin: 0;
+  font-size: 14px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -33,6 +39,6 @@ let tasks: Task[] = [
 <Header></Header>
 <div class="main">
   <TaskList {tasks}/>
-  <TaskForm />
+  <EmptyMessage show={tasks.length == 0} />
+  <TaskForm on:input-complete={inputComplete}/>
 </div>
-
