@@ -1,7 +1,6 @@
 <script lang="ts">
 import { createEventDispatcher } from "svelte";
 
-import { formatDate } from "./util";
   let task: string;
   let deadline: string;
   const dispatch = createEventDispatcher();
@@ -15,11 +14,14 @@ import { formatDate } from "./util";
 </script>
 
 <style lang="scss">
+
+@use "../styles/var";
   input[type="text"],
   input[type="date"] {
     height: 40px;
     padding: 4px 8px;
     font-size: 16px;
+    border: 1px solid #333;
   }
 
   .form-group {
@@ -47,17 +49,25 @@ import { formatDate } from "./util";
     border: none;
     border-radius: 2px;
     padding: 8px 32px;
-    background: #3a90f3;
-    color: #fff;
+    background: #fff;
+    border: 2px solid var.$accent-color;
+    color: var.$accent-color;
     transition: .3s;
     cursor: pointer;
 
     &:hover {
-      opacity: 0.75;
+      background: var.$accent-color;
+      color: #fff;
     }
 
     &:disabled {
       cursor: not-allowed;
+
+      &:hover {
+        opacity: .6;
+        background: transparent;
+        color: var.$accent-color;
+      }
     }
   }
 </style>
